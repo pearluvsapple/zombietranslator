@@ -6,7 +6,9 @@ var translationRequirements = [
     'translationRule5',
     'translationRule6',
     'translationRule7',
-    'translationRule8'
+    'translationRule8',
+    'translationRule9',
+    'translationRule10'
   ],
   requirements = ['require'];
 
@@ -18,7 +20,9 @@ define(requirements.concat(translationRequirements), function(require){
   Translator.prototype.translate = function(input, direction){
     direction = direction || 'zombify';
     var zombify = "";
-        zombify = this.translationRule1(input, direction);
+        zombify = this.translationRule9(input, direction);
+        zombify = this.translationRule10(zombify, direction);
+        zombify = this.translationRule1(zombify, direction);
         zombify = this.translationRule8(zombify, direction);
         zombify = this.translationRule2(zombify, direction);
         zombify = this.translationRule4(zombify, direction);
@@ -33,7 +37,6 @@ define(requirements.concat(translationRequirements), function(require){
     var x = translationRequirements[i];
     Translator.prototype[x] = require(x);
   }
-
 
   return Translator;
 

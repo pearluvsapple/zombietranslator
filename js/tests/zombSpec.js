@@ -39,12 +39,20 @@ define(['replacementRules'], function(RuleEngine){
       expect(replacement).toBe(expectedString);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule1(testContent);
 
-      expect(transformedContent).toBe(expectedContent);
+      expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule1(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
 
   });
@@ -72,11 +80,20 @@ define(['replacementRules'], function(RuleEngine){
       expect(myRuleEngine.translationRule2('Abba')).toBe('Abba');
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule2(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule2(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
   });
 
@@ -103,12 +120,23 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule3(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+
     });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule3(testContent);
+
+      expect(transformedContent).toBeDefined();
+    });
+
   });
 
   //Rule 4
@@ -127,11 +155,20 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule4(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule4(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
 
   });
@@ -152,11 +189,20 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule5(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule5(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
 
   });
@@ -177,11 +223,20 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule6(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule6(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
 
   });
@@ -202,11 +257,21 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule7(testContent);
-      expect(transformedContent).toBe(expectedContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule7(testContent);
+
+      expect(transformedContent).toBeDefined();
     });
 
   });
@@ -227,13 +292,73 @@ define(['replacementRules'], function(RuleEngine){
       expect(transformedContent).toBe(expectedContent);
     });
 
-    it('should not choke on null input', function(){
+    it('should not choke on an empty string as input', function(){
       var testContent = "",
           expectedContent = "",
           transformedContent = myRuleEngine.translationRule8(testContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule8(testContent);
+
+      expect(transformedContent).toBeDefined();
+    });
+  });
+
+  //Rule 9
+  describe('Rule 9', function(){
+    it('Zombies cant use special characters, lets remove them from the string', function(){
+      var testContent = "@#%",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule9(testContent);
       expect(transformedContent).toBe(expectedContent);
     });
 
+    it('should not choke on an empty string as input', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule9(testContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule9(testContent);
+
+      expect(transformedContent).toBeDefined();
+    });
+  });
+
+  //Rule 10
+  describe('Rule 10', function(){
+    it('should replace numbers with brains in each sentence', function(){
+      var testContent = "34",
+          expectedContent = "brainsbrains",
+          transformedContent = myRuleEngine.translationRule10(testContent);
+      expect(transformedContent).toBe(expectedContent);
+    });
+
+    it('should not choke on an empty string as input', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule10(testContent);
+
+          expect(transformedContent).toEqual(expectedContent);
+    });
+
+    it('inputs should always be defined, even when left blank', function(){
+      var testContent = "",
+          expectedContent = "",
+          transformedContent = myRuleEngine.translationRule10(testContent);
+
+      expect(transformedContent).toBeDefined();
+    });
   });
 
 });

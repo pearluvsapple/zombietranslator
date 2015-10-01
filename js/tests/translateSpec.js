@@ -3,7 +3,7 @@ define(['replacementRules','translationRule1'], function(Translator, translation
   describe('Translation Rule Application Sequence', function(){
     var aTranslator = new Translator();
 
-    it('somethingsomethingfoo', function(){
+    it('makes sure all the rules are being called on each input', function(){
       var expectedRule1Output = 'Rule 1',
           expectedRule2Output = 'Rule 2',
           expectedRule3Output = 'Rule 3',
@@ -12,6 +12,8 @@ define(['replacementRules','translationRule1'], function(Translator, translation
           expectedRule6Output = 'Rule 6',
           expectedRule7Output = 'Rule 7',
           expectedRule8Output = 'Rule 8',
+          expectedRule9Output = 'Rule 9',
+          expectedRule10Output = 'Rule 10',
 
           rule1Spy = spyOn(aTranslator, 'translationRule1').and.returnValue(expectedRule1Output),
           rule2Spy = spyOn(aTranslator, 'translationRule2').and.returnValue(expectedRule2Output),
@@ -20,12 +22,17 @@ define(['replacementRules','translationRule1'], function(Translator, translation
           rule5Spy = spyOn(aTranslator, 'translationRule5').and.returnValue(expectedRule5Output),
           rule6Spy = spyOn(aTranslator, 'translationRule6').and.returnValue(expectedRule6Output),
           rule7Spy = spyOn(aTranslator, 'translationRule7').and.returnValue(expectedRule7Output),
-          rule8Spy = spyOn(aTranslator, 'translationRule8').and.returnValue(expectedRule8Output);
+          rule8Spy = spyOn(aTranslator, 'translationRule8').and.returnValue(expectedRule8Output),
+          rule9Spy = spyOn(aTranslator, 'translationRule9').and.returnValue(expectedRule9Output),
+          rule10Spy = spyOn(aTranslator, 'translationRule10').and.returnValue(expectedRule10Output);
+
 
       var input = 'literally anything',
           output = aTranslator.translate(input);
 
-      expect(rule1Spy).toHaveBeenCalledWith(input, 'zombify');
+      expect(rule9Spy).toHaveBeenCalledWith(input, 'zombify');
+      expect(rule10Spy).toHaveBeenCalledWith(expectedRule9Output, 'zombify');
+      expect(rule1Spy).toHaveBeenCalledWith(expectedRule10Output, 'zombify');
       expect(rule8Spy).toHaveBeenCalledWith(expectedRule1Output, 'zombify');
       expect(rule2Spy).toHaveBeenCalledWith(expectedRule8Output, 'zombify');
       expect(rule4Spy).toHaveBeenCalledWith(expectedRule2Output, 'zombify');
@@ -33,6 +40,7 @@ define(['replacementRules','translationRule1'], function(Translator, translation
       expect(rule6Spy).toHaveBeenCalledWith(expectedRule5Output, 'zombify');
       expect(rule7Spy).toHaveBeenCalledWith(expectedRule6Output, 'zombify');
       expect(rule3Spy).toHaveBeenCalledWith(expectedRule7Output, 'zombify');
+
       expect(output).toBe(expectedRule3Output);
     });
   });
@@ -41,12 +49,14 @@ define(['replacementRules','translationRule1'], function(Translator, translation
   describe('Input/Output Verification', function(){
     // really unhappy at this point
     var aTranslator = new Translator();
-    var translateString = 'A Roger, a Wilco. Charlie! I am Charlie? Who are you!';
-    var expectedString = 'Hra RRrrrRrgrrrh, hra WrrRrlcrrrRr. ChaRRlrrRrrr! RrRr am ChaRRlrrRrrr? WhrrrRr aRRrr yrrrRrrrrrRr!';
+    var translateString = 'A Roger, a Wilco. 1 Ch@rlie! I am Charlie? Who are you!';
+    var expectedString = 'Hra RRrrrRrgrrrh, hra WrrRrlcrrrRr. BRRarrRrns ChRRlrrRrrr! RrRr am ChaRRlrrRrrr? WhrrrRr aRRrr yrrrRrrrrrRr!';
 
     it('should should provide an accurate output the rules when the correct order is applied', function(){
       var output = "";
-          output = aTranslator.translationRule1(translateString);
+          output = aTranslator.translationRule9(translateString);
+          output = aTranslator.translationRule10(output);
+          output = aTranslator.translationRule1(output);
           output = aTranslator.translationRule8(output);
           output = aTranslator.translationRule2(output);
           output = aTranslator.translationRule4(output);

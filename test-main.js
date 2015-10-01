@@ -26,7 +26,9 @@ require.config({
       translationRule5: 'js/app/translationRule5',
       translationRule6: 'js/app/translationRule6',
       translationRule7: 'js/app/translationRule7',
-      translationRule8: 'js/app/translationRule8'
+      translationRule8: 'js/app/translationRule8',
+      translationRule9: 'js/app/translationRule9',
+      translationRule10: 'js/app/translationRule10'
   },
   shim: {
       bootstrap: ['jquery']
